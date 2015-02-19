@@ -1,0 +1,10 @@
+{%- set nrpe = salt['grains.filter_by']({
+  'RedHat': {
+    'pkg': 'nrpe',
+    'service': 'nrpe',
+    'conf_path': '/etc/nagios/nrpe.cfg',
+    'conf_include_dir': '/etc/nrpe.d/',
+    'conf_allowed_hosts': '127.0.0.1',
+    'conf_blame_nrpe': 0,
+  }
+}, merge=salt['pillar.get']('nrpe')) %}

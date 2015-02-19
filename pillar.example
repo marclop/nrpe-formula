@@ -1,0 +1,23 @@
+nrpe:
+  pkg: nrpe
+  service: nrpe
+  conf_path: /etc/nagios/nrpe.cfg
+  conf_include_dir: /etc/nrpe.d/
+  conf_allowed_hosts: host1,host2,host3,host4
+  conf_blame_nrpe: 1
+  plugins:
+    - disk
+    - http
+    - load
+    - fping
+    - icmp
+    - tcp
+    - users
+    - procs
+    - mysql
+  mysql:
+    hostname: # Required if mysql set in pillar MUST BE REPLACED BY MINION HOSTNAME (grains['host'])
+      user: nagios # Required if mysql set in pillar, user which will connect to MySQL instance
+      pass: nagios # OPTIONAL
+      galera: True # OPTIONAL
+      db: dbname   # OPTIONAL
